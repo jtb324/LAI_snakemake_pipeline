@@ -1,0 +1,11 @@
+# envs/samtools_tabix.yaml
+name: tabix
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+channel_priority: strict
+dependencies:
+  - htslib==1.23.1   # Locks the underlying C-engine to prevent syntax drift
+  - libcurl==8.20.0
+  - tabix==1.11     # Strictly locks the command-line tool execution version

@@ -11,6 +11,8 @@ rule download_flare_jar:
         jar = FLARE_JAR
     params:
         url = config["flare"]["flare_jar_url"]
+    conda:
+        "./envs/wget.yaml"
     shell:
         "wget -O {output.jar} {params.url}"
 
@@ -42,5 +44,7 @@ rule index_vcf:
     output: 
         # We need to generate a tbi file
         tbi = rules.flare_call.output.lai_output + ".tbi"
+    conda:
+        "./envs/tabix.yaml"
     shell:
         "tabix -p vcf {input.vcf}"

@@ -1,0 +1,9 @@
+# envs/samtools_tabix.yaml
+name: wget
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+channel_priority: strict
+dependencies:
+  - wget==1.25.0
