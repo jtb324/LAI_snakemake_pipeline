@@ -1,0 +1,17 @@
+# ignore explicit configuration files
+config.yaml
+
+# os and Editor files
+.vscode/
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+
+# snakemake hidden folders
+.snakemake/
+logs/
+
+# output or test
+output/
+tests/
+test/

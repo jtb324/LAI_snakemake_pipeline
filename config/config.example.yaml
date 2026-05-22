@@ -1,0 +1,29 @@
+flare_output_dir: "output/"
+threads: 10
+seed: 1234
+# The user can set the chromosomes here. Appropriate values are as follows:
+# * "autosomes": all autosomal chromosomes
+# * [1,2,etc]: a list of which chromosomes the user wishes to run
+chromosomes: "autosomes"
+
+flare:
+  # If the user doesn't have flare installed then we can pull it from github
+  flare_jar_url: https://faculty.washington.edu/browning/flare.jar
+  # If the user does have flare installed then they can specify it here
+  flare_jar_path: ""
+  #This should be a tab separated text file
+  ref_panel: "reference.txt" 
+  # This should be the reference panel in vcf form. Make sure this value you provide a template placeholder 'chrom' 
+  # so that the pipeline automatically injects valid chromosome numbers in
+  ref_vcf_template: "reference_chr{chrom}.vcf"
+  # tab separated genetic map files. The plink formatted ones from the decode project will work. Also make sure this value 
+  # has a template placeholder 'chrom' as shown in the example value  
+  genetic_map_template: "decode_map_plink_format_chr{chrom}.txt"
+  #Phased vcf from running SHAPEIT5. This must be a vcf file (not bcf) and can be either compressed (gzip) or uncompressed. 
+  # Again make sure this value has a template plaecholder 'chrom'
+  vcf_input_template: "shapeit5_phased_chr{chrom}.vcf.gz"
+  # output file prefix. This doesn't need to have a file suffix like .vcf.gz. This pipeline will automatic append the 
+  # '_chr{chrom}' and then FLARE will append additional suffixes
+  output_file_prefix: "test_cohort"
+  # Setting the heap memory of the JVM. This will be in gigabytes
+  jvm_memory: "100"
